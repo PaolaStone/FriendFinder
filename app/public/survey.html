@@ -1,6 +1,5 @@
 <!DOCTYPE html>
     <head>
-        <!-- <tittle> Crystal game</tittle> -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://code.jquery.com/jquery.js"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -10,183 +9,213 @@
     <body>
         <div  class="container" style="align-items: center; text-align: center;">        
             <br>
-            <div class="card-header">
-                <br>
+            
+            <div class="jumbotron">
                 <h2>Friends compatibility survey</h2>
-                <br>
             </div>
-       
-            <div id = "survey" class="row" >
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Enter your name</span>
+                </div>
+                    <input id="userName" type="text" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+
+            <div id = "survey" class="row " >
                 <br>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">
-                    <h3><strong>Question 1</strong></h3>
-                    <h4>Pick your favorite episode</h4>
-                    <select class="chosen-select" id="question1">
-                        <option value= "" >Select from list </option>                               
-                        <option value= "0">The One With The Prom Video</option>
-                        <option value= "1"  >The One With The Embryos</option>
-                        <option value= "2"  >The One Where Everybody Finds Out</option>
-                        <option value= "3"  >The One With Unagi</option>
-                        <option value= "4"  >The One With The Football</option>
-                        <option value= "5"  >The One Where Ross Got High</option>
-                    </select>
-                    <br>
-                    <br>
-                </li>
-                <li class="list-group-item">   
-                <h3><strong>Question 2</strong></h3>
-                    <h4 id = "question2" >Who was your favorite boyfriend/girlfriend?</h4>
-                    <select class="chosen-select" id="question2">
-                        <option value= "" >Select from list </option>                               
-                        <option value= "0">Mike</option>
-                        <option value= "1"  >Kathy</option>
-                        <option value= "2"  >Richard</option>
-                        <option value= "3"  >Julie</option>
-                        <option value= "4"  >Tag</option>
-                        <option value= "5"  >None of them</option>
-                    </select>
-                    <br>
-                    <br>
-                </li>
-                <li class="list-group-item">
-                    <h3><strong>Question 3</strong></h3>
-                    <h4 id = "question3" >Which word describes you best?</h4>
-                    <select class="chosen-select" id="question3">
-                        <option value= "" >Select from list </option>                               
-                        <option value= "0">Lazy</option>
-                        <option value= "1"  >Goofy</option>
-                        <option value= "2"  >Cynical</option>
-                        <option value= "3"  >Likable</option>
-                        <option value= "4"  >Dorky</option>
-                        <option value= "5"  >One of a kind</option>
-                    </select>
-                    <br>
-                    <br>
-                </li>
-                <li class="list-group-item">
-                    <h3><strong>Question 4</strong></h3>
-                    <h4 id = "question4" >What would you order from Central Perk?</h4>
-                    <select class="chosen-select" id="question4">
-                        <option value= "" >Select from list </option>                               
-                        <option value= "0">Bagel</option>
-                        <option value= "1"  >Muffin</option>
-                        <option value= "2"  >Cookies</option>
-                        <option value= "3"  >Latte</option>
-                        <option value= "4"  >Tea</option>
-                        <option value= "5"  >Scone</option>
-                    </select>
-                    <br>
-                    <br>
-                </li>
-                <li class="list-group-item">
-                    <h3><strong>Question 5</strong></h3>
-                    <h4 id = "question5" >Pick an activity that would bring you great joy</h4>
-                    <select class="chosen-select" id="question5">
-                        <option value= "" >Select from list </option>                               
-                        <option value= "0">Eating a lot of food</option>
-                        <option value= "1" >Playing with legos in an organized fashion</option>
-                        <option value= "2">Prank calling people</option>
-                        <option value= "3">Reading the newspaper and drinking coffee</option>
-                        <option value= "4">Gossiping about your crush</option>
-                        <option value= "5">Reading a magazine</option>
-                    </select>
-                    <br>
-                    <br>
-                </li>
-                <li class="list-group-item">
-                    <h3><strong>Question 6</strong></h3>
-                    <h4 id = "question6" >If your house was burning down what would be the one thing you would bring with you?</h4>
-                    <select class="chosen-select" id="question6">
-                        <option value= "" >Select from list </option>                               
-                        <option value= "0">Food from the fridge</option>
-                        <option value= "1"  >As much as you could grab to save the apartment</option>
-                        <option value= "2"  >Your guitar</option>
-                        <option value= "3"  >Your fossils</option>
-                        <option value= "4"  >You'd just run</option>
-                        <option value= "5"  >Your credit card</option>
-                    </select>
-                    <br>
-                    <br>
-                </li>
-                <li class="list-group-item">
-                    <h3><strong>Question 7</strong></h3>
-                    <h4 >What would be your perfect date?</h4>
-                    <select class="chosen-select" id="question7">
-                        <option value= "" >Select from list </option>                               
-                        <option value= "0">Anything as long as I am with that person</option>
-                        <option value= "1"  >Date? I'd just bring her back to my apartment</option>
-                        <option value= "2"  >Im not so good with dates. Probably just a movie</option>
-                        <option value= "3"  >I'd cook for my date and then we'd sit and talk with a glass of wine</option>
-                        <option value= "4"  >I'd maybe start with a massage… see where it takes us</option>
-                        <option value= "5"  >I'd take her to all her/him favorite places</option>
-                    </select>
-                    <br>
-                    <br>
-                </li>
-                <li class="list-group-item">
-                    <h3><strong>Question 8</strong></h3>
-                    <h4 id = "question8" >What animal best suits you?</h4>
-                    <select class="chosen-select" id="question8">
-                        <option value= "" >Select from list </option>                               
-                        <option value= "0">A smelly cat</option>
-                        <option value= "1"  >A pig</option>
-                        <option value= "2"  >A monkey</option>
-                        <option value= "3"  >A lobster</option>
-                        <option value= "4"  >A fish (they don’t make too much mess</option>
-                        <option value= "5"  >A duck... or a chick</option>
-                    </select>
-                    <br>
-                    <br>
-                </li>
-                <li class="list-group-item">
-                    <h3><strong>Question 9</strong></h3>
-                    <h4 id = "question1" >Whom do you think Joey should have ended up with?</h4>
-                    <select class="chosen-select" id="question1">
-                        <option value= "" >Select from list </option>                               
-                        <option value= "0">No one - it's Joey he's a player…</option>
-                        <option value= "1"  >Rachel - he only ever loved her</option>
-                        <option value= "2"  >Monica - she loved him from the start</option>
-                        <option value= "3"  >Phoebe - they are the secret lovers</option>
-                        <option value= "4"  >Not Rachel - anyone but Rachel...</option>
-                        <option value= "5"  >Me! it should be me!</option>
-                    </select>
-                    <br>
-                    <br>
-                    
-                </li>
-                <li class="list-group-item">
-                    <h3><strong>Question 10</strong></h3><h4 id = "question1" >Whom do you think you're going to end up with?</h4>
-                    <select class="chosen-select" id="question1">
-                        <option value= "" >Select from list </option>                               
-                        <option value= "0">Phoebe</option>
-                        <option value= "1"  >Monica</option>
-                        <option value= "2"  >Rachel</option>
-                        <option value= "3"  >Joey</option>
-                        <option value= "4"  >Chandler</option>
-                        <option value= "5"  >Ross</option>
-                    </select>
-                    <br>
-                    <br>
-                </li>
-        </div>
-                    <button id="start" style= "align-self: center" class="btn btn btn-warning btn-lg"><h2>See Results</h2></button>
-                <!-- </div> -->
-            </ul>
+                        <h3><strong>Question 1</strong></h3>
+                        <h4>Pick your favorite episode</h4>
+                        <select class="chosen-select" id="question1">
+                            <option value= "" >Select from list </option>                               
+                            <option value= "0">The One With The Prom Video</option>
+                            <option value= "1"  >The One With The Embryos</option>
+                            <option value= "2"  >The One Where Everybody Finds Out</option>
+                            <option value= "3"  >The One With Unagi</option>
+                            <option value= "4"  >The One With The Football</option>
+                            <option value= "5"  >The One Where Ross Got High</option>
+                        </select>
+                        <br>
+                        <br>
+                    </li>
+                    <li class="list-group-item">   
+                    <h3><strong>Question 2</strong></h3>
+                        <h4>Who was your favorite boyfriend/girlfriend?</h4>
+                        <select class="chosen-select" id="question2">
+                            <option value= "" >Select from list </option>                               
+                            <option value= "0">Mike</option>
+                            <option value= "1"  >Kathy</option>
+                            <option value= "2"  >Richard</option>
+                            <option value= "3"  >Julie</option>
+                            <option value= "4"  >Tag</option>
+                            <option value= "5"  >None of them</option>
+                        </select>
+                        <br>
+                        <br>
+                    </li>
+                    <li class="list-group-item">
+                        <h3><strong>Question 3</strong></h3>
+                        <h4>Which word describes you best?</h4>
+                        <select class="chosen-select" id="question3">
+                            <option value= "" >Select from list </option>                               
+                            <option value= "0">Lazy</option>
+                            <option value= "1"  >Goofy</option>
+                            <option value= "2"  >Cynical</option>
+                            <option value= "3"  >Likable</option>
+                            <option value= "4"  >Dorky</option>
+                            <option value= "5"  >One of a kind</option>
+                        </select>
+                        <br>
+                        <br>
+                    </li>
+                    <li class="list-group-item">
+                        <h3><strong>Question 4</strong></h3>
+                        <h4>What would you order from Central Perk?</h4>
+                        <select class="chosen-select" id="question4">
+                            <option value= "" >Select from list </option>                               
+                            <option value= "0">Bagel</option>
+                            <option value= "1"  >Muffin</option>
+                            <option value= "2"  >Cookies</option>
+                            <option value= "3"  >Latte</option>
+                            <option value= "4"  >Tea</option>
+                            <option value= "5"  >Scone</option>
+                        </select>
+                        <br>
+                        <br>
+                    </li>
+                    <li class="list-group-item">
+                        <h3><strong>Question 5</strong></h3>
+                        <h4>Pick an activity that would bring you great joy</h4>
+                        <select class="chosen-select" id="question5">
+                            <option value= "" >Select from list </option>                               
+                            <option value= "0">Eating a lot of food</option>
+                            <option value= "1" >Playing with legos in an organized fashion</option>
+                            <option value= "2">Prank calling people</option>
+                            <option value= "3">Reading the newspaper and drinking coffee</option>
+                            <option value= "4">Gossiping about your crush</option>
+                            <option value= "5">Reading a magazine</option>
+                        </select>
+                        <br>
+                        <br>
+                    </li>
+                    <li class="list-group-item">
+                        <h3><strong>Question 6</strong></h3>
+                        <h4>If your house was burning down what would be the one thing you would bring with you?</h4>
+                        <select class="chosen-select" id="question6">
+                            <option value= "" >Select from list </option>                               
+                            <option value= "0">Food from the fridge</option>
+                            <option value= "1"  >As much as you could grab to save the apartment</option>
+                            <option value= "2"  >Your guitar</option>
+                            <option value= "3"  >Your fossils</option>
+                            <option value= "4"  >You'd just run</option>
+                            <option value= "5"  >Your credit card</option>
+                        </select>
+                        <br>
+                        <br>
+                    </li>
+                    <li class="list-group-item">
+                        <h3><strong>Question 7</strong></h3>
+                        <h4 >What would be your perfect date?</h4>
+                        <select class="chosen-select" id="question7">
+                            <option value= "" >Select from list </option>                               
+                            <option value= "0">Anything as long as I am with that person</option>
+                            <option value= "1"  >Date? I'd just bring her back to my apartment</option>
+                            <option value= "2"  >Im not so good with dates. Probably just a movie</option>
+                            <option value= "3"  >I'd cook for my date and then we'd sit and talk with a glass of wine</option>
+                            <option value= "4"  >I'd maybe start with a massage… see where it takes us</option>
+                            <option value= "5"  >I'd take her to all her/him favorite places</option>
+                        </select>
+                        <br>
+                        <br>
+                    </li>
+                    <li class="list-group-item">
+                        <h3><strong>Question 8</strong></h3>
+                        <h4>What animal best suits you?</h4>
+                        <select class="chosen-select" id="question8">
+                            <option value= "" >Select from list </option>                               
+                            <option value= "0">A smelly cat</option>
+                            <option value= "1"  >A pig</option>
+                            <option value= "2"  >A monkey</option>
+                            <option value= "3"  >A lobster</option>
+                            <option value= "4"  >A fish (they don’t make too much mess</option>
+                            <option value= "5"  >A duck... or a chick</option>
+                        </select>
+                        <br>
+                        <br>
+                    </li>
+                    <li class="list-group-item">
+                        <h3><strong>Question 9</strong></h3>
+                        <h4>Whom do you think Joey should have ended up with?</h4>
+                        <select class="chosen-select" id="question9">
+                            <option value= "" >Select from list </option>                               
+                            <option value= "0">No one - it's Joey he's a player…</option>
+                            <option value= "1"  >Rachel - he only ever loved her</option>
+                            <option value= "2"  >Monica - she loved him from the start</option>
+                            <option value= "3"  >Phoebe - they are the secret lovers</option>
+                            <option value= "4"  >Not Rachel - anyone but Rachel...</option>
+                            <option value= "5"  >Me! it should be me!</option>
+                        </select>
+                        <br>
+                        <br>
+                        
+                    </li>
+                    <li class="list-group-item">
+                        <h3><strong>Question 10</strong></h3>
+                        <h4>Whom do you think you're going to end up with?</h4>
+                        <select class="chosen-select" id="question10">
+                            <option value= "" >Select from list </option>                               
+                            <option value= "0">Phoebe</option>
+                            <option value= "1"  >Monica</option>
+                            <option value= "2"  >Rachel</option>
+                            <option value= "3"  >Joey</option>
+                            <option value= "4"  >Chandler</option>
+                            <option value= "5"  >Ross</option>
+                        </select>
+                        <br>
+                        <br>
+                    </li>
+                    <li class="list-group-item">
+                        <button id = "seeResults" type = "submit" style= "align-self: center" class="btn btn btn-warning btn-lg">
+                            <h2>See Results</h2>
+                        </button>
+                    </li>
+                </ul>
                 <br>
-               
-        </!-->
-        <footer class="footer">
-                <div class="container">
-                  <p><a href="">API Friends List</a> | <a href="">GitHub Repo</a></p>
-                </div>
-        </footer>
+                <br>
+                <footer class="footer">
+                        <div class="container">
+                        <p><a href="">API Friends List</a> | <a href="">GitHub Repo</a></p>
+                        </div>
+                </footer>
+            </div>
+    </body>
+</html> 
+
+<script type="text/javascript">
+    $("#seeResults").on("click", function(event){
+        event.preventDefault();
+        var userValues = {
+            name: $("#userName").val().trim(),
+            photo: " ",
+            scores: []
+        }
+
+        for (i = 1; i < 11; i++){
+            console.log($("#question" + i).val().trim());
+            userValues.scores.push($("#question" + i).val().trim());
+        }
+        $.post("/api/friends", userValues, function(data){
+            if (data){
+                alert("added")
+            }
+        })
         
-        <script type="text/javascript">
+    }
+        
+    )
            
         
-        </script>
+</script>
     
         
-    </body>
-</html>
+    
