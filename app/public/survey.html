@@ -192,6 +192,14 @@
 </html> 
 
 <script type="text/javascript">
+var Monica = 0
+var Rachel = 0
+var Phoebe = 0
+var Joey = 0
+var Ross = 0
+var Chandler = 0
+
+
     $("#seeResults").on("click", function(event){
         event.preventDefault();
         var userValues = {
@@ -210,6 +218,59 @@
             }
         })
         
+        function getFriends(){
+            $.ajax({url:"/api/friends", method: "GET" })
+                .then(function(friendsData){
+                    // console.log("this is friends data" + friendsData)
+                    
+                    
+
+                    for (var i = 0; i <= 5 ; i++){
+                        for (var j = 0; j <= 9; j++){
+                            if (friendsData[i].scores[j] === userValues.scores[j]){
+                                if (i === 0) {
+                                    Monica = Monica + 1
+                                }
+                                if (i === 1) {
+                                    Rachel = Rachel + 1
+                                    // console.log("this is Rachel in if " + Rachel)
+                                }
+                                
+                                if (i === 2) {
+                                    Phoebe = Phoebe + 1
+                                }
+
+                                if (i === 3) {
+                                    Joey = Joey + 1
+                                }
+
+                                if (i === 4) {
+                                    Ross = Ross + 1
+                                }
+
+                                if (i === 5) {
+                                    Chandler = Chandler + 1
+                                }
+                                                               
+                            }
+                            console.log("This is Monica  " + Monica)
+                                console.log("This is Rachel  " + Rachel)
+                                console.log("This is Phoebe  " + Phoebe)
+                                console.log("This is Joey  " + Joey)
+                                console.log("This is Ross  " + Ross)
+                                console.log("This is Chandler  " + Chandler)
+                                console.log("This is the largest  " + Math.max(Monica, Rachel, Phoebe, Joey, Ross, Chandler))
+                            
+                            console.log("THis should be the name   " + ((Math.max(Monica, Rachel, Phoebe, Joey, Ross, Chandler)).attr(name)))
+                        }
+            
+            } 
+            })
+            
+            
+        }
+        
+        getFriends()
     }
         
     )
