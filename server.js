@@ -11,7 +11,7 @@ var PORT = process.env.PORT || 8080;
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
-//TODO: app.use(express.static(__dirname + "/app/css"));
+app.use(express.static("/app/public"));
 
 //routes
 require("./app/routing/apiRoutes")(app);

@@ -180,11 +180,30 @@
                         </button>
                     </li>
                 </ul>
+
+                <div id = "modal"class="modal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 id= "modalTitle" class="modal-title">Your best "Friends' character match is: "</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div id= "modalBody" class="modal-body">
+                                <p>Image and name.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <br>
                 <br>
                 <footer class="footer">
                         <div class="container">
-                        <p><a href="">API Friends List</a> | <a href="">GitHub Repo</a></p>
+                        <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/PaolaStone/FriendFinder">GitHub Repo</a></p>
                         </div>
                 </footer>
             </div>
@@ -192,12 +211,15 @@
 </html> 
 
 <script type="text/javascript">
-var Monica = 0
-var Rachel = 0
-var Phoebe = 0
-var Joey = 0
-var Ross = 0
-var Chandler = 0
+$(document).ready(function(){})
+
+    var Monica = 0
+    var Rachel = 0
+    var Phoebe = 0
+    var Joey = 0
+    var Ross = 0
+    var Chandler = 0
+    var valuesArray = []
 
 
     $("#seeResults").on("click", function(event){
@@ -214,17 +236,13 @@ var Chandler = 0
         }
         $.post("/api/friends", userValues, function(data){
             if (data){
-                alert("added")
+                console.log("added")
             }
         })
         
         function getFriends(){
             $.ajax({url:"/api/friends", method: "GET" })
                 .then(function(friendsData){
-                    // console.log("this is friends data" + friendsData)
-                    
-                    
-
                     for (var i = 0; i <= 5 ; i++){
                         for (var j = 0; j <= 9; j++){
                             if (friendsData[i].scores[j] === userValues.scores[j]){
@@ -233,7 +251,6 @@ var Chandler = 0
                                 }
                                 if (i === 1) {
                                     Rachel = Rachel + 1
-                                    // console.log("this is Rachel in if " + Rachel)
                                 }
                                 
                                 if (i === 2) {
@@ -253,27 +270,53 @@ var Chandler = 0
                                 }
                                                                
                             }
-                            console.log("This is Monica  " + Monica)
-                                console.log("This is Rachel  " + Rachel)
-                                console.log("This is Phoebe  " + Phoebe)
-                                console.log("This is Joey  " + Joey)
-                                console.log("This is Ross  " + Ross)
-                                console.log("This is Chandler  " + Chandler)
-                                console.log("This is the largest  " + Math.max(Monica, Rachel, Phoebe, Joey, Ross, Chandler))
-                            
-                            console.log("THis should be the name   " + ((Math.max(Monica, Rachel, Phoebe, Joey, Ross, Chandler)).attr(name)))
                         }
+                    }                   
+                    valuesArray.push(Monica, Rachel, Phoebe, Joey, Ross, Chandler) 
+                    valuesArrayNew = [
+                        {
+                            name: "Monica",
+                            value: Monica
+                        },
+                        {
+                            name: "Rachel",
+                            value: Rachel
+                        },
+                        {
+                            name: "Phoebe",
+                            value: Phoebe
+                        },
+                        {
+                            name: "Joey",
+                            value: Joey
+                        },
+                        {
+                            name: "Ross",
+                            value: Ross
+                        },
+                        {
+                            name: "Chandler",
+                            value: Chandler
+                        }
+                    ]
+                    
+                    highVal = Math.max(valuesArrayNew[0].value, valuesArrayNew[1].value, valuesArrayNew[2].value, valuesArrayNew[3].value, valuesArrayNew[4].value, valuesArrayNew[5].value)
+                    
+                    var index = jQuery.inArray( highVal, valuesArray )
+                    console.log("this is highVal   :" + highVal)
+                    console.log("this is index   " + index)
+                    console.log("your match is : " + valuesArrayNew[index].name)
+                });
             
-            } 
-            })
-            
-            
+           
+        };
+
+        function modal (){
+            $("#modal").modal("show"); 
         }
         
-        getFriends()
-    }
-        
-    )
+        getFriends();
+    });
            
         
 </script>
