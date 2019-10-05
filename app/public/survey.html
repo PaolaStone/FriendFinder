@@ -13,19 +13,20 @@
             <div class="jumbotron">
                 <h2>Friends compatibility survey</h2>
             </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Enter your name</span>
+            <div id= "userInfo">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Enter your name</span>
+                    </div>
+                        <input id="userName" type="text" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
-                    <input id="userName" type="text" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1">
-            </div>
-            <div class="input-group mb-3">
-                <div class="input-group-prepend">
-                    <span class="input-group-text">Enter the address (URL) of your picture</span>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Enter the address (URL) of your picture</span>
+                    </div>
+                        <input id="userPhoto" type="text" class="form-control" placeholder="https://images.unsplash.com/photo-1533166200043-5d76679dd13f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=60" aria-label="Username" aria-describedby="basic-addon1">
                 </div>
-                    <input id="userPhoto" type="text" class="form-control" placeholder="https://images.unsplash.com/photo-1533166200043-5d76679dd13f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=60" aria-label="Username" aria-describedby="basic-addon1">
             </div>
-
             <div id = "survey" class="row " >
                 <br>
                 <ul class="list-group list-group-flush">
@@ -209,7 +210,15 @@
                         </div>
                     </div>
             </div>
-            
+            <div id = "alert" class="alert alert-warning" role="alert">
+                <p>Click <a href="/survey" class="alert-link">here</a> to go back to the survey.</p>
+                <p>Click <a href="/home" class="alert-link">here</a> to go back to the home page.</p>
+            </div>
+            <div id = "questionNotAnswered" class="alert alert-warning" role="alert">
+                <p>All questions have to be answered</p>    
+                <p>Click <a href="/survey" class="alert-link">here</a> to go back to the survey.</p>
+                    
+            </div>
             <footer class="footer">
                 <div class="container">
                     <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/PaolaStone/FriendFinder">GitHub Repo</a></p>
@@ -233,7 +242,8 @@ $(document).ready(function(){})
     var Ross = 0;
     var Chandler = 0;
     var valuesArray = [];
-
+    $("#alert").hide();
+    $("#questionNotAnswered").hide();
 
     $("#seeResults").on("click", function(event){
         event.preventDefault();
@@ -243,10 +253,16 @@ $(document).ready(function(){})
             scores: []
         }
 
+
         for (i = 1; i < 11; i++){
-            console.log($("#question" + i).val().trim());
-            userValues.scores.push($("#question" + i).val().trim());
+            value = ($("#question" + i).val().trim())
+            if (value !== ""){
+                userValues.scores.push($("#question" + i).val().trim())
+            }else{
+                userValues.scores.push("0")
+            }
         }
+        
         $.post("/api/friends", userValues, function(data){
             if (data){
                 console.log("added")
@@ -285,7 +301,8 @@ $(document).ready(function(){})
                             }
                         }
                     }                   
-                    valuesArray.push(Monica, Rachel, Phoebe, Joey, Ross, Chandler) 
+                    valuesArray.push(Monica, Rachel, Phoebe, Joey, Ross, Chandler)
+                    
                     valuesArrayNew = [
                         {
                             name: "Monica",
@@ -312,39 +329,40 @@ $(document).ready(function(){})
                             value: Chandler
                         }
                     ]
-                    
                     highVal = Math.max(valuesArrayNew[0].value, valuesArrayNew[1].value, valuesArrayNew[2].value, valuesArrayNew[3].value, valuesArrayNew[4].value, valuesArrayNew[5].value)
                     
-                    var index = jQuery.inArray( highVal, valuesArray )
-                    console.log("this is highVal   :" + highVal)
-                    console.log("this is index   " + index)
-                    console.log("your match is : " + valuesArrayNew[index].name)
-                    console.log(friendsData)
-                    console.log(userValues.name)
-                    $("#userNameModal").append(userValues.name);
-                    var img = '<img src="'+userValues.photo+'" width="330" height="250">'
-                    $("#userImage").append(img);
+                    highValUsers = Math.max((parseInt(userValues.scores[0])), (parseInt(userValues.scores[1])), (parseInt(userValues.scores[2])), (parseInt(userValues.scores[3])), (parseInt(userValues.scores[4])), (parseInt(userValues.scores[5])), (parseInt(userValues.scores[6])), (parseInt(userValues.scores[7])), (parseInt(userValues.scores[8])), (parseInt(userValues.scores[9])))
                     
-                    $("#friendName").append(friendsData[index].name);
-                    var img = '<img src="'+friendsData[index].photo+'" width="330" height="250">'
-                    $("#friendImage").append(img);
-                    
-                    $("#myModal").show();
-                    
-                    $("#closeButton").on("click",function(event){
-                        $("#myModal").hide();
-                    });
+                    if (highValUsers !== 0){
+                        var index = jQuery.inArray( highVal, valuesArray )
+                        
+                        $("#userNameModal").append("<br>" + userValues.name);
+                        var img = '<img src="'+userValues.photo+'" width="330" height="250">'
+                        $("#userImage").append(img);
+                        
+                        $("#friendName").append("<br><br>" + friendsData[index].name);
+                        var img = '<img src="'+friendsData[index].photo+'" width="330" height="250">'
+                        $("#friendImage").append(img);
+                        
+                        $("#myModal").show();
+                        
+                        $("#closeButton").on("click",function(event){
+                            $("#myModal").hide();
+                            $("#userInfo").hide();
+                            $("#survey").hide();
+                            $("#alert").show();
+                        });
 
-                    
+                    }else{
+                        $("#userInfo").hide();
+                        $("#survey").hide();
+                        $("#questionNotAnswered").show();
+                    }
                 });
                 
            
         };
 
-        // function modal (){
-             
-        // }
-        
         getFriends();
     });
            
