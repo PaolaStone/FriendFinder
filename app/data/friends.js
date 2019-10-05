@@ -1,7 +1,8 @@
 var friends = [
 	{
 		name: "Monica",
-		photo: "https://assets.afcdn.com/story/20140225/184341_w767h767c1cx345cy200.jpg",
+		photo: (img ( src = "/app/public/images/embryos.gif")),
+		// photo: "https://assets.afcdn.com/story/20140225/184341_w767h767c1cx345cy200.jpg",
 		scores: ["3","2","3","0","1","1","3","4","2","1"]
 	},
 	{

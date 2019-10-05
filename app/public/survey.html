@@ -180,46 +180,50 @@
                         </button>
                     </li>
                 </ul>
-
-                <div id = "modal"class="modal" tabindex="-1" role="dialog">
+            </div>
+            <div id = "myModal" class="modal"  role="dialog">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 id= "modalTitle" class="modal-title">Your best "Friends' character match is: "</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
+                            <div id= "modalBody">
+                                <h5 id= "userNameModal"> </h5>
+                                <br>
+                                <img id= "userImage" width="160" height="120"/>
+                                <br>
+                                <br>
+                                <h5 id= "friendName">The character you are compatible with is: </h5>
+                                <br>
+                                <img id= "friendImage" width="160" height="120"/>
                             </div>
-                            <div id= "modalBody" class="modal-body">
-                                <p>Image and name.</p>
-                            </div>
+                            <br>                            
+                            <br>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button id = "closeButton" type="button" class="btn btn-secondary" data-dismiss="myModal">Close</button>
                             </div>
                         </div>
                     </div>
-                </div>
-                <br>
-                <br>
-                <footer class="footer">
-                        <div class="container">
-                        <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/PaolaStone/FriendFinder">GitHub Repo</a></p>
-                        </div>
-                </footer>
             </div>
+        </div>
+
+            
+            <footer class="footer">
+                <div class="container">
+                    <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/PaolaStone/FriendFinder">GitHub Repo</a></p>
+                </div>
+            </footer>
     </body>
 </html> 
 
 <script type="text/javascript">
+
 $(document).ready(function(){})
 
-    var Monica = 0
-    var Rachel = 0
-    var Phoebe = 0
-    var Joey = 0
-    var Ross = 0
-    var Chandler = 0
-    var valuesArray = []
+    var Monica = 0;
+    var Rachel = 0;
+    var Phoebe = 0;
+    var Joey = 0;
+    var Ross = 0;
+    var Chandler = 0;
+    var valuesArray = [];
 
 
     $("#seeResults").on("click", function(event){
@@ -306,14 +310,26 @@ $(document).ready(function(){})
                     console.log("this is highVal   :" + highVal)
                     console.log("this is index   " + index)
                     console.log("your match is : " + valuesArrayNew[index].name)
+                    console.log(friendsData)
+                    console.log(userValues.name)
+                    $("#userNameModal").append(userValues.name);
+                    $("#userImage").append(userValues.photo);
+                    $("#friendName").append(friendsData[index].name);
+                    $("#friendImage").append(friendsData[index].photo);
+                    $("#myModal").show();
+                    $("#closeButton").on("click",function(event){
+                        $("#myModal").hide();
+                    })
+
+                    
                 });
-            
+                
            
         };
 
-        function modal (){
-            $("#modal").modal("show"); 
-        }
+        // function modal (){
+             
+        // }
         
         getFriends();
     });
