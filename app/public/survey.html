@@ -19,6 +19,12 @@
                 </div>
                     <input id="userName" type="text" class="form-control" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1">
             </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Enter the address (URL) of your picture</span>
+                </div>
+                    <input id="userPhoto" type="text" class="form-control" placeholder="https://images.unsplash.com/photo-1533166200043-5d76679dd13f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=60" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
 
             <div id = "survey" class="row " >
                 <br>
@@ -185,14 +191,15 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div id= "modalBody">
+                                <br>
                                 <h5 id= "userNameModal"> </h5>
                                 <br>
-                                <img id= "userImage" width="160" height="120"/>
+                                <div id= "userImage"></div>
                                 <br>
                                 <br>
                                 <h5 id= "friendName">The character you are compatible with is: </h5>
                                 <br>
-                                <img id= "friendImage" width="160" height="120"/>
+                                <div id= "friendImage"></div>
                             </div>
                             <br>                            
                             <br>
@@ -202,14 +209,16 @@
                         </div>
                     </div>
             </div>
-        </div>
-
             
             <footer class="footer">
                 <div class="container">
                     <p><a href="/api/friends">API Friends List</a> | <a href="https://github.com/PaolaStone/FriendFinder">GitHub Repo</a></p>
                 </div>
             </footer>
+        </div>
+
+            
+            
     </body>
 </html> 
 
@@ -230,7 +239,7 @@ $(document).ready(function(){})
         event.preventDefault();
         var userValues = {
             name: $("#userName").val().trim(),
-            photo: " ",
+            photo: $("#userPhoto").val().trim(),
             scores: []
         }
 
@@ -313,13 +322,18 @@ $(document).ready(function(){})
                     console.log(friendsData)
                     console.log(userValues.name)
                     $("#userNameModal").append(userValues.name);
-                    $("#userImage").append(userValues.photo);
+                    var img = '<img src="'+userValues.photo+'" width="330" height="250">'
+                    $("#userImage").append(img);
+                    
                     $("#friendName").append(friendsData[index].name);
-                    $("#friendImage").append(friendsData[index].photo);
+                    var img = '<img src="'+friendsData[index].photo+'" width="330" height="250">'
+                    $("#friendImage").append(img);
+                    
                     $("#myModal").show();
+                    
                     $("#closeButton").on("click",function(event){
                         $("#myModal").hide();
-                    })
+                    });
 
                     
                 });
